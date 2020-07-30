@@ -1,15 +1,17 @@
+// Algorithm base class
+
 package com.example.knightstour;
 
 import android.graphics.Point;
 
-public class Algorithm {
+public class Alg {
 
     int startX, startY, mov;
     int[][] solveB;
     int[][] solvedFinal;
     MainActivity main;
 
-    public Algorithm(Point start, MainActivity main) {
+    public Alg(Point start, MainActivity main) {
         this.startX = start.x;
         this.startY = start.y;
         this.mov = 1;

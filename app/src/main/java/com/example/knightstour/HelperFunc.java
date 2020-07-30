@@ -1,3 +1,5 @@
+// Functions I use in various places
+
 package com.example.knightstour;
 
 import android.graphics.Point;

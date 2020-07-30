@@ -1,9 +1,11 @@
+// Backtracking algorithm, child class of algorithm class
+
 package com.example.knightstour;
 
 import android.graphics.Point;
 
-public class Backtracking extends Algorithm {
-    public Backtracking(Point start, MainActivity main) {
+public class Bt extends Alg {
+    public Bt(Point start, MainActivity main) {
         super(start, main);
     }
 
@@ -19,7 +21,7 @@ public class Backtracking extends Algorithm {
             int turnX = x + Const.xt[i];
             int turnY = y + Const.yt[i];
 
-            if(isSafe(turnY,turnX) && solve[turnY][turnX] == 0) {
+            if(solve[turnY][turnX] == 0 && isSafe(turnY,turnX)) {
                 if (tour(solve, turnY, turnX, mov + 1)) {
                     return true;
                 }

@@ -1,3 +1,5 @@
+// UI related things
+
 package com.example.knightstour;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
     static Button[][] buttonArr;
     public static Timer timerA;
     public int[][] solveB;
-    public Algorithm alg;
+    public Alg alg;
 
     //Handles all button clicks
     public void onClick(View v) {
         activityReset();
         updateBoard(false);
         Point point = HelperFunc.findPoint(v);
-        alg = new Backtracking(point, this);
+        alg = new Bt(point, this);
         alg.solve();
     }
 
