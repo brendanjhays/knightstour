@@ -3,14 +3,15 @@ package com.example.knightstour;
 import android.graphics.Point;
 
 public class Backtracking extends Algorithm {
-    public Backtracking(Point start) {
-        super(start);
+    public Backtracking(Point start, MainActivity main) {
+        super(start, main);
     }
 
     public boolean tour(int[][] solve, int y, int x, int mov) {
         solve[y][x] = mov;
         if (mov == Const.bSize*Const.bSize) {
             solvedFinal = solveB;
+            main.onSolve();
             return true;
         }
 

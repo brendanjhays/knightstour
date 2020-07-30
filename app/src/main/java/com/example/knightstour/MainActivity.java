@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.Timer;
 
@@ -55,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Handles all button clicks
     public void onClick(View v) {
-            activityReset();
+        activityReset();
         updateBoard(false);
         Point point = HelperFunc.findPoint(v);
-        alg = new Backtracking(point);
+        alg = new Backtracking(point, this);
+        alg.solve();
     }
 
     //Sets all buttons enabled state
@@ -101,5 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 buttonArr[i][j].setText("");
             }
         }
+    }
+
+    public void onSolve() {
+        solveB = alg.getSolve();
+        doAnimation();
     }
 }
