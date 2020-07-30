@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public static ImageView knight;
+    public ImageView knight;
     static Button[][] buttonArr;
     public static Timer timerA;
     public int[][] solveB;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Sets all buttons enabled state
-    private void updateBoard(boolean state) {
+    public void updateBoard(boolean state) {
         for (int i=0;i<Const.bSize;i++) {
             for (int j=0;j<Const.bSize;j++) {
                 buttonArr[i][j].setEnabled(state);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Takes pixel coordinates and moves knight view
-    public static void moveKnight(final int nx, final int ny, final int time, final View v) {
+    public void moveKnight(final int nx, final int ny, final int time, final View v) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     //Handles animation timer
     private void doAnimation() {
         Timer timer = new Timer();
-        timer.schedule(new AnimTimer(solveB),0, 250);
+        timer.schedule(new AnimTimer(solveB, this),0, 250);
         timerA = timer;
     }
 
@@ -106,5 +106,14 @@ public class MainActivity extends AppCompatActivity {
     public void onSolve() {
         solveB = alg.getSolve();
         doAnimation();
+    }
+
+    public void updateSepThread(final boolean state) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                updateBoard(state);
+            }
+        });
     }
 }
