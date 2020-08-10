@@ -15,11 +15,26 @@ public class Rn extends Alg{
     }
 
     public void solve() {
-        randomTour(x,y);
+        solvedFinal = randomTour(x,y);
     }
 
     public int[][] randomTour(int x, int y) {
-        solveB[y][x] = mov++;
+        while (true) {
+            solveB[y][x] = mov++;
+            if (mov == 65) {
+                return solveB;
+            }
+            Point turn = nextTurn(x,y);
+            if (turn.x == -1) {
+                solveB = new int[Const.bSize][Const.bSize];
+                mov = 1;
+                turn.x = 0;
+                turn.y = 0;
+            }
+            x = turn.x;
+            y = turn.y;
+        }
+
 
 
     }
