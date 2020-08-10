@@ -12,8 +12,11 @@ import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.Timer;
 
@@ -28,6 +31,19 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int screenW = displayMetrics.widthPixels;
         buttonArr = new Button[Const.bSize][Const.bSize];
+
+        Switch typeSwitch = findViewById(R.id.btorrn);
+        typeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    Toast.makeText(getBaseContext(),"Random enabled",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getBaseContext(),"Backtracking enabled",Toast.LENGTH_SHORT).show();
+                }
+                type = b;
+            }
+        });
 
         // Setting up array of buttons
         for (int i = 0; i < 8; i++) {
@@ -53,14 +69,17 @@ public class MainActivity extends AppCompatActivity {
     public static Timer timerA;
     public int[][] solveB;
     public Alg alg;
+    private boolean type;
 
     //Handles all button clicks
     public void onClick(View v) {
         activityReset();
         updateBoard(false);
         Point point = HelperFunc.findPoint(v);
-        alg = new Bt(point, this);
+        if (type) alg = new Rn(point, this);
+        else alg = new Bt(point, this);
         alg.solve();
+
     }
 
     //Sets all buttons enabled state

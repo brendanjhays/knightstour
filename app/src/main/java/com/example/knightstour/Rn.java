@@ -4,7 +4,6 @@ package com.example.knightstour;
 import android.graphics.Point;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
@@ -16,6 +15,7 @@ public class Rn extends Alg{
 
     public void solve() {
         solvedFinal = randomTour(x,y);
+        main.onSolve();
     }
 
     public int[][] randomTour(int x, int y) {
@@ -34,9 +34,6 @@ public class Rn extends Alg{
             x = turn.x;
             y = turn.y;
         }
-
-
-
     }
 
     public Point nextTurn(int x, int y) {

@@ -21,7 +21,7 @@ public class Bt extends Alg {
             int turnX = x + Const.xt[i];
             int turnY = y + Const.yt[i];
 
-            if(isEmpty(y,x,solve) && isSafe(turnY,turnX)) {
+            if(isSafe(turnY,turnX) && solve[turnY][turnX] == 0) {
                 if (tour(solve, turnY, turnX, mov + 1)) {
                     return true;
                 }
