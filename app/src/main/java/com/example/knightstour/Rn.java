@@ -5,7 +5,6 @@ import android.graphics.Point;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class Rn extends Alg{
 
@@ -37,13 +36,11 @@ public class Rn extends Alg{
     }
 
     public Point nextTurn(int x, int y) {
-        Random rand = new Random();
         ArrayList<Integer> list = assembleTurns();
-        int cnt;
         for (int i=0;i<8;i++) {
             int tmpX = x + Const.xt[list.get(i)];
             int tmpY = y + Const.yt[list.get(i)];
-            if (isEmpty(tmpY,tmpX,solveB)) {
+            if (isSafe(tmpY,tmpX) && solveB[y][x] == 0) {
                 Point point = new Point();
                 point.x = x;
                 point.y = y;
@@ -56,8 +53,8 @@ public class Rn extends Alg{
     }
 
     public ArrayList<Integer> assembleTurns() {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<9; i++) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i=0; i<8; i++) {
             list.add(i);
         }
         Collections.shuffle(list);
