@@ -27,10 +27,15 @@ public class Alg {
     }
 
     public boolean isEmpty(int y, int x, int[][] solve) {
-        return (solve[y][x] == 0);
+        return ((isSafe(y,x)) && (solve[y][x] == 0));
     }
 
     public int[][] getSolve() {
         return solvedFinal;
     }
+
+   /* public boolean hasOrphan(int[][] solve) {
+        for (int i=0;i<8;)
+        return false;
+    } */
 }
