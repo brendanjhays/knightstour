@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((screenW / Const.bSize),(screenW / (Const.bSize+2)));
         knight.setLayoutParams(layoutParams);
         layout.addView(knight);
+        knight.setVisibility(View.INVISIBLE);
     }
 
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         if (type) alg = new Rn(point, this);
         else alg = new Bt(point, this);
         alg.solve();
-
+        knight.setVisibility(View.VISIBLE);
     }
 
     //Sets all buttons enabled state
