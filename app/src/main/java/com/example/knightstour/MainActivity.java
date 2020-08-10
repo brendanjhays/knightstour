@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         int screenW = displayMetrics.widthPixels;
         buttonArr = new Button[Const.bSize][Const.bSize];
 
-        Switch typeSwitch = findViewById(R.id.btorrn);
+        typeSwitch = findViewById(R.id.btorrn);
         typeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public int[][] solveB;
     public Alg alg;
     private boolean type;
+    private Switch typeSwitch;
 
     //Handles all button clicks
     public void onClick(View v) {
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 buttonArr[i][j].setEnabled(state);
             }
         }
+        typeSwitch.setEnabled(state);
     }
 
 
